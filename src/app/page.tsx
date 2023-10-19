@@ -1,10 +1,10 @@
 import styles from './page.module.css';
 import { gql } from '@apollo/client';
 import { client } from '@/lib/client';
-import VehiclesList from '@/components/vehicles/List';
+import VehiclesList from '@/components/vehicles/list/List';
 import { IVehicle } from '@/lib/types';
 
-async function getData(): Promise<IVehicle[]> {
+async function getData(): Promise<{ vehicles: IVehicle[] }> {
   const { data } = await client.query({
     query: gql`
       query {
@@ -38,7 +38,7 @@ async function getData(): Promise<IVehicle[]> {
     `,
   });
 
-  return data.vehicles;
+  return data;
 }
 
 export default async function Home() {
@@ -48,7 +48,7 @@ export default async function Home() {
     <main className={styles.main}>
       <div className={styles.container}>
         <h1>Корабли</h1>
-        <VehiclesList vehicles={data} />
+        <VehiclesList vehicles={data.vehicles} />
       </div>
     </main>
   );
