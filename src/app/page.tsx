@@ -47,7 +47,7 @@ export default async function Home() {
   return (
     <main className={styles.main}>
       <div className={styles.container}>
-        <h1>Main</h1>
+        <h1>Корабли</h1>
         <VehiclesList vehicles={data} />
       </div>
     </main>

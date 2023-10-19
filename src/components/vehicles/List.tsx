@@ -8,6 +8,17 @@ interface IProps {
 }
 
 export default function VehiclesList({ vehicles }: IProps) {
+  let nameLong = '';
+  vehicles.forEach((vehicle) => {
+    const name = vehicle.title;
+
+    if (nameLong.length < name.length) {
+      nameLong = name;
+    }
+  });
+
+  console.log(nameLong);
+
   console.log(vehicles[0]);
 
   return (
@@ -18,16 +29,16 @@ export default function VehiclesList({ vehicles }: IProps) {
           className={styles.item}
           // style={{ backgroundColor: vehicle.nation.color }}
         >
-          <div className={styles.top}>
-            <div className={styles.topInfo}>
+          <div className={styles.head}>
+            <div className={styles.headTop}>
               <Image
-                className={styles.topImage}
+                className={styles.typeImage}
                 src={`https:${vehicle.type.icons.default}`}
                 width={27}
                 height={27}
                 alt={vehicle.type.name}
               />
-              <div className={styles.topLevel}>{vehicle.level}</div>
+              <div className={styles.headLevel}>{vehicle.level}</div>
             </div>
 
             <Image
@@ -45,14 +56,14 @@ export default function VehiclesList({ vehicles }: IProps) {
               height={256}
               alt={vehicle.title}
             />
+
+            <div className={styles.headBot}>
+              <div className={styles.type}>{vehicle.type.title}</div>
+              <div className={styles.title}>{vehicle.title}</div>
+            </div>
           </div>
 
-          <div className={styles.info}>
-            <div>Название: {vehicle.title}</div>
-            <div>Класс: {vehicle.type.title}</div>
-            <div>Нация: {vehicle.title}</div>
-            <div>{vehicle.description}</div>
-          </div>
+          <div className={styles.description}>{vehicle.description}</div>
         </div>
       ))}
     </div>

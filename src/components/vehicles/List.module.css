@@ -1,7 +1,7 @@
 .list {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
+  gap: 20px 10px;
 
   z-index: 1;
 }
@@ -16,10 +16,11 @@
   border: 1px solid #CCC;
 }
 
-.top {
+.head {
   position: relative;
+  color: white;
 }
-.top::after {
+.head::after {
   content: '';
   position: absolute;
   top: 0;
@@ -31,7 +32,8 @@
   background-color: rgba(0,0,0,0.3);
   z-index: 2;
 }
-.topInfo {
+
+.headTop {
   position: absolute;
   top: 0;
   left: 0;
@@ -39,8 +41,7 @@
   display: flex;
   align-items: center;
   gap: 5px;
-
-  color: white;
+  padding: 5px;
 
   z-index: 10;
 }
@@ -64,7 +65,32 @@
   z-index: 5;
 }
 
-.info {
+
+.headBot {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 5px;
+
+  background-color: rgba(0,0,0,0.3);
+  z-index: 10;
+}
+
+.type {}
+
+.title {
+  text-transform: uppercase;
+  font-weight: bold;
+  text-align: right;
+}
+
+
+.description {
   display: flex;
   flex-direction: column;
   padding: 10px;
