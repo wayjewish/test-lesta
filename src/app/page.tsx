@@ -1,5 +1,5 @@
 import styles from './page.module.css';
-import { ApolloQueryResult, gql } from '@apollo/client';
+import { ApolloQueryResult } from '@apollo/client';
 import { client } from '@/api/client';
 import VehiclesList from '@/components/vehicles/list/List';
 import { IVehicle } from '@/lib/types';
