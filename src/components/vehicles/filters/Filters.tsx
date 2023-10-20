@@ -20,26 +20,14 @@ interface IProps {
 }
 
 const labels: {
-  [key in keyof IFilters]: {
-    label: string;
-    defaultText: string;
-  };
+  [key in keyof IFilters]: string;
 } = {
-  level: {
-    label: 'Уровень',
-    defaultText: 'Любой',
-  },
-  nation: {
-    label: 'Нация',
-    defaultText: 'Любая',
-  },
-  type: {
-    label: 'Класс',
-    defaultText: 'Любой',
-  },
+  level: 'Уровень',
+  nation: 'Нация',
+  type: 'Класс',
 };
 
-export default function VehiclesList({ options, filtering }: IProps) {
+export default function Filters({ options, filtering }: IProps) {
   const [filters, setFilters] = useState<IFilters>({
     level: '',
     nation: '',
@@ -59,14 +47,14 @@ export default function VehiclesList({ options, filtering }: IProps) {
         const keyFilter = key as keyof IFilters;
         return (
           <label key={key} className={styles.label}>
-            {labels[keyFilter].label}:
+            {labels[keyFilter]}:
             <select
               className={styles.select}
               name={key}
               value={filters[keyFilter]}
               onChange={(e) => changeSelectHandler(keyFilter, e.target.value)}
             >
-              <option value=''>{labels[keyFilter].defaultText}</option>
+              <option value=''>Все</option>
               {options[keyFilter].map((value) => (
                 <option key={value} value={value}>
                   {value}

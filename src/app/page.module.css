@@ -5,6 +5,11 @@
   background-color: #f4f5f6;
 }
 
+.container {
+  width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+}
 
 @media (min-width: 576px) {
   .container {
@@ -34,10 +39,4 @@
   .container {
     max-width: 1320px;
   }
-}
-
-.container {
-  width: 100%;
-  margin-right: auto;
-  margin-left: auto;
 }

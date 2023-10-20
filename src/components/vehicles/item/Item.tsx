@@ -1,4 +1,3 @@
-'use client';
 import styles from './Item.module.css';
 import Image from 'next/image';
 import { IVehicle } from '@/lib/types';
@@ -9,11 +8,7 @@ interface IProps {
 
 export default function VehiclesItem({ vehicle }: IProps) {
   return (
-    <div
-      key={vehicle.title}
-      className={styles.item}
-      // style={{ backgroundColor: vehicle.nation.color }}
-    >
+    <div key={vehicle.title} className={styles.item}>
       <div className={styles.head}>
         <div className={styles.headTop}>
           <Image

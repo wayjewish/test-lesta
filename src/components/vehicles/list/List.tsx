@@ -1,7 +1,7 @@
 'use client';
 import styles from './List.module.css';
 import { IVehicle } from '@/lib/types';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Filters, { IFilters, IFiltersOptions } from '../filters/Filters';
 import VehiclesItem from '../item/Item';
 
@@ -33,9 +33,18 @@ const getFiltersOptions = (vehicles: IVehicle[]): IFiltersOptions => {
 };
 
 export default function VehiclesList({ vehicles }: IProps) {
+  const [isLoading, setIsLoading] = useState<boolean>(false);
   const [vehiclesFiltred, setVehiclesFiltred] = useState<IVehicle[]>(vehicles);
 
   const filteringHandler = (filters: IFilters) => {
+    setIsLoading(true);
+    setVehiclesFiltred([]);
+
+    if (!filters.level && !filters.nation && !filters.type) {
+      setVehiclesFiltred(vehicles);
+      return;
+    }
+
     const newVehiclesFiltred = vehicles.filter((vehicle) => {
       if (filters.level && String(vehicle.level) !== filters.level) return false;
       if (filters.nation && vehicle.nation.name !== filters.nation) return false;
@@ -46,17 +55,27 @@ export default function VehiclesList({ vehicles }: IProps) {
     setVehiclesFiltred(newVehiclesFiltred);
   };
 
+  useEffect(() => {
+    if (vehiclesFiltred.length > 0 && isLoading) {
+      setIsLoading(false);
+    }
+  }, [isLoading, vehiclesFiltred]);
+
   return (
     <>
       <Filters
         options={getFiltersOptions(vehicles)}
         filtering={(filters) => filteringHandler(filters)}
       />
-      <div className={styles.list}>
-        {vehiclesFiltred.map((vehicle) => (
-          <VehiclesItem key={vehicle.title} vehicle={vehicle} />
-        ))}
-      </div>
+
+      {isLoading && <>Loading...</>}
+      {!isLoading && (
+        <div className={styles.list}>
+          {vehiclesFiltred.map((vehicle) => (
+            <VehiclesItem key={vehicle.title} vehicle={vehicle} />
+          ))}
+        </div>
+      )}
     </>
   );
 }
