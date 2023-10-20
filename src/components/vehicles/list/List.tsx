@@ -34,11 +34,11 @@ const getFiltersOptions = (vehicles: IVehicle[]): IFiltersOptions => {
 
 export default function VehiclesList({ vehicles }: IProps) {
   const [isLoading, setIsLoading] = useState<boolean>(false);
-  const [vehiclesFiltred, setVehiclesFiltred] = useState<IVehicle[]>(vehicles);
+  const [vehiclesFiltred, setVehiclesFiltred] = useState<IVehicle[] | null>(vehicles);
 
   const filteringHandler = (filters: IFilters) => {
     setIsLoading(true);
-    setVehiclesFiltred([]);
+    setVehiclesFiltred(null);
 
     if (!filters.level && !filters.nation && !filters.type) {
       setVehiclesFiltred(vehicles);
@@ -56,7 +56,7 @@ export default function VehiclesList({ vehicles }: IProps) {
   };
 
   useEffect(() => {
-    if (vehiclesFiltred.length > 0 && isLoading) {
+    if (vehiclesFiltred !== null && isLoading) {
       setIsLoading(false);
     }
   }, [isLoading, vehiclesFiltred]);
@@ -69,7 +69,7 @@ export default function VehiclesList({ vehicles }: IProps) {
       />
 
       {isLoading && <>Loading...</>}
-      {!isLoading && (
+      {vehiclesFiltred !== null && !isLoading && (
         <div className={styles.list}>
           {vehiclesFiltred.map((vehicle) => (
             <VehiclesItem key={vehicle.title} vehicle={vehicle} />
