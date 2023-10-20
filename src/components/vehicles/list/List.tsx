@@ -1,6 +1,6 @@
 'use client';
 import styles from './List.module.css';
-import { IVehicle } from '@/lib/types';
+import { IVehicle } from '@/api/types';
 import { useEffect, useState } from 'react';
 import Filters, { IFilters, IFiltersOptions } from '../filters/Filters';
 import VehiclesItem from '../item/Item';

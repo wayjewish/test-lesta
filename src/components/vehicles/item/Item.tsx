@@ -1,6 +1,6 @@
 import styles from './Item.module.css';
 import Image from 'next/image';
-import { IVehicle } from '@/lib/types';
+import { IVehicle } from '@/api/types';
 
 interface IProps {
   vehicle: IVehicle;
@@ -16,7 +16,7 @@ export default function VehiclesItem({ vehicle }: IProps) {
             src={`https:${vehicle.type.icons.default}`}
             width={27}
             height={27}
-            alt={vehicle.type.name}
+            alt={vehicle.type.title}
           />
           <div className={styles.headLevel}>{vehicle.level}</div>
         </div>

@@ -3,7 +3,6 @@ export interface IVehicle {
   description: string;
   level: number;
   icons: {
-    large: string;
     medium: string;
   };
   type: {
@@ -16,10 +15,7 @@ export interface IVehicle {
   nation: {
     name: string;
     title: string;
-    color: string;
     icons: {
-      small: string;
-      medium: string;
       large: string;
     };
   };

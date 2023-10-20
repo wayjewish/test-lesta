@@ -2,7 +2,7 @@ import styles from './page.module.css';
 import { ApolloQueryResult } from '@apollo/client';
 import { client } from '@/api/client';
 import VehiclesList from '@/components/vehicles/list/List';
-import { IVehicle } from '@/lib/types';
+import { IVehicle } from '@/api/types';
 import { queryVehicles } from '@/api/query';
 
 async function getData(): Promise<ApolloQueryResult<{ vehicles: IVehicle[] }>> {

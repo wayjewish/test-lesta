@@ -5,11 +5,10 @@ export const queryVehicles = gql`
     vehicles {
       title
       description
+      level
       icons {
-        large
         medium
       }
-      level
       type {
         name
         title
@@ -20,10 +19,7 @@ export const queryVehicles = gql`
       nation {
         name
         title
-        color
         icons {
-          small
-          medium
           large
         }
       }
