@@ -58,9 +58,10 @@ export default function VehiclesList({ options, filtering }: IProps) {
       {Object.keys(options).map((key) => {
         const keyFilter = key as keyof IFilters;
         return (
-          <label key={key}>
+          <label key={key} className={styles.label}>
             {labels[keyFilter].label}:
             <select
+              className={styles.select}
               name={key}
               value={filters[keyFilter]}
               onChange={(e) => changeSelectHandler(keyFilter, e.target.value)}
