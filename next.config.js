@@ -6,6 +6,10 @@ const nextConfig = {
         protocol: 'https',
         hostname: 'mk-glossary.korabli.su',
       },
+      {
+        protocol: 'https',
+        hostname: 'glossary.korabli.su',
+      },
     ],
   },
 }
